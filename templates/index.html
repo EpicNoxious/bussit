@@ -1,0 +1,16 @@
+{% include 'navbar.html' %}
+
+<h1>Welcome to BussIt</h1>
+
+<p>This is a prototype of a project named BussIt. BussIt is a
+    project specifically made for Chandigarh University.
+    This project deals with a very specific problem of university
+    going students who have opted university buses as a
+    mode of transportation.
+</p>
+
+<form method="post" name="started_form">
+    {{ started.csrf_token }}
+    {{ started.started }}
+</form>
+{%  include 'footer.html' %}
