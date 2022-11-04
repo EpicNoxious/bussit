@@ -1,16 +1,21 @@
-{% include 'navbar.html' %}
+{% extends 'main.html' %} {% block content %}
+<div class="section section--1">
+  <h1 class="section__heading">Welcome to BussIt</h1>
 
-<h1>Welcome to BussIt</h1>
-
-<p>This is a prototype of a project named BussIt. BussIt is a
-    project specifically made for Chandigarh University.
-    This project deals with a very specific problem of university
-    going students who have opted university buses as a
-    mode of transportation.
-</p>
-
-<form method="post" name="started_form">
-    {{ started.csrf_token }}
-    {{ started.started }}
-</form>
-{%  include 'footer.html' %}
+  <form method="post" name="started_form" class="started_form">
+    {{ started.csrf_token }} {{ started.started }}
+  </form>
+</div>
+<div class="section section--2">
+  <h1 class="section__heading">Sample Heading</h1>
+</div>
+<div class="section section--3">
+  <h1 class="section__heading">Sample Heading</h1>
+</div>
+<div class="section section--4">
+  <h1 class="section__heading">Sample Heading</h1>
+</div>
+<div class="section section--5">
+  <h1 class="section__heading">Sample Heading</h1>
+</div>
+{% endblock content %}

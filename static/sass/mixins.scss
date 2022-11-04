@@ -1,0 +1,38 @@
+@mixin respond($breakpoint) {
+    @if $breakpoint == sm-mob {
+      @media only screen and (max-width: 31.25em) {
+        @content;
+      } //500
+    }
+    @if $breakpoint == big-mob {
+      @media only screen and (max-width: 46.87em) {
+        @content;
+      } //750
+    }
+    @if $breakpoint == sm-tab {
+      @media only screen and (max-width: 62.5em) {
+        @content;
+      } //1000
+    }
+    @if $breakpoint == md-tab {
+      @media only screen and (max-width: 74em) {
+        @content;
+      } //1184
+    }
+    @if $breakpoint == big-tab {
+      @media only screen and (max-width: 85em) {
+        @content;
+      } //1360
+    }
+    @if $breakpoint == sm-desktop {
+      @media only screen and (max-width: 90em) {
+        @content;
+      } //1400
+    }
+    @if $breakpoint == big-desktop {
+      @media only screen and (min-width: 125em) {
+        @content;
+      } //2000
+    }
+  }
+  

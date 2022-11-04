@@ -7,16 +7,16 @@ class GetStarted(FlaskForm):
     started = SubmitField("Get Started")
 
 
-class CreateForm1(FlaskForm):
+class Register(FlaskForm):
     uid = StringField("UID", validators=[DataRequired()], render_kw={"placeholder": "Your UID"})
     email = StringField("Email", validators=[DataRequired(), Email()], render_kw={"placeholder": "Your Email"})
     password = PasswordField("Password", validators=[DataRequired()], render_kw={"placeholder": "Your Password"})
     confirm_password = PasswordField("Confirm Password", validators=[DataRequired()],
                                      render_kw={"placeholder": "Confirm Password"})
-    create = SubmitField("Create Entry")
+    register = SubmitField("Create Entry")
 
 
-class CreateForm2(FlaskForm):
+class Login(FlaskForm):
     uid = StringField("UID", validators=[DataRequired()], render_kw={"placeholder": "Your UID"})
     password = PasswordField("Password", validators=[DataRequired()], render_kw={"placeholder": "Your Password"})
     login = SubmitField("Login Entry")

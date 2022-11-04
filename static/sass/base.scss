@@ -1,0 +1,50 @@
+:root {
+  --white: #fff;
+  --off-white: #f7f7f5;
+  --black: #000;
+
+  --blue-1: #3456ff;
+  --blue-2: #070928;
+
+  --light-blue-1: #7189ff;
+  --light-blue-2: #c2ccff;
+  --white-1: #ffffff;
+  --white-2: #f8f8fa;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  /* Good practice to keep box-sizing inherit */
+  box-sizing: inherit;
+}
+
+html {
+  font-size: 62.5%; // 10/16
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+
+  @include respond(big-desktop) {
+    font-size: 0.6vw;
+  }
+
+  @include respond(md-tab) {
+    font-size: 56.25%; // 9/16
+  }
+
+  @include respond(sm-tab) {
+    font-size: 50%; // 8/16
+  }
+  @include respond(big-mob) {
+    font-size: 43.75%; // 7/16
+  }
+}
+
+body {
+  box-sizing: border-box;
+  position: relative;
+  background-color: var(--white-2);
+  font-family: "Josefin Sans", sans-serif;
+}

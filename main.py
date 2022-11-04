@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
 from pymongo import MongoClient
-from forms import GetStarted, CreateForm1, CreateForm2, ReadForm, UpdateForm, DeleteForm
+from forms import GetStarted, Register, Login, ReadForm, UpdateForm, DeleteForm
 
 app = Flask(__name__)
-app.secret_key = 'bussit'
+app.secret_key = 'Bussit'
 # cluster = "mongodb://atlas.."
 # client = MongoClient(cluster)
 client = MongoClient("localhost", 27017)
@@ -11,36 +11,92 @@ cluster = client['crud']
 db = cluster.users
 
 
+# USER
+class User:
+    def begin_session(self, user):
+        del user['password']
+        print(user)
+        session['logged_in'] = True
+        session['user'] = user
+        print('Session started successfully')
+
+    def end_session(self):
+        session.clear()
+        return redirect("/")
+
+    def register(self, query):
+        user = {
+            "uid": query['uid'],
+            "email": query['email'],
+            "password": query['password'],
+            }
+        db.insert_one(user)
+        print('User added in the Database')
+        return self.begin_session(user)
+
+    def login(self, profile):
+        user = {
+            "uid": profile['uid'],
+            "email": profile['email'],
+            "password": profile['password'],
+            }
+        return self.begin_session(user)
+
+
+# ROUTES
+# @app.route("/", methods=['GET'])
+# def main():
+#     return render_template("main.html")
 @app.route("/", methods=['GET', 'POST'])
 def index():
     started = GetStarted()
     if started.validate_on_submit():
-        return redirect(url_for('login'))
+        return redirect(url_for('signupin'))
     return render_template("index.html", started=started)
 
 
 @app.route("/login/", methods=['GET', 'POST'])
-def login():
-    create = CreateForm1()
-    login = CreateForm2()
-    if create.create.data and create.validate_on_submit():
+def signupin():
+    register = Register()
+    login = Login()
+    user = User()
+
+    # User Sign Up
+    if register.register.data and register.validate():
         uid = request.form['uid']
         email = request.form['email']
         password = request.form['password']
         confirm_password = request.form['confirm_password']
-        query = {'uid': uid, 'email': email, 'password': password}
-        user = db.find_one({'email': email})
-        if user is not None:
+
+        query = {
+            'uid': uid,
+            'email': email,
+            'password': password
+            }
+        profile = db.find_one({'uid': uid})
+
+        if profile is not None:
             print("User already exists")
         elif password != confirm_password:
             print("Passwords don't match")
         else:
-            print(uid, email, password, confirm_password)
-            db.insert_one(query)
-            print('User added in the Database')
+            user.register(query)
+            return redirect(url_for('success'))
 
-    if login.login.data and login.validate_on_submit():
-        print('Login')
+    # User Sign In
+    if login.login.data and login.validate():
+        uid = request.form['uid']
+        password = request.form['password']
+
+        profile = db.find_one({'uid': uid})
+        print(profile)
+
+        if profile is None:
+            print("User does not exist in database")
+        elif password != profile['password']:
+            print("Passwords don't match")
+        else:
+            user.login(profile)
 
     # if read.read.data and read.validate_on_submit():
     #     print('read')
@@ -48,8 +104,14 @@ def login():
     #     print('update')
     # if delete.delete.data and delete.validate_on_submit():
     #     print('delete')
-    return render_template("login.html", create=create, login=login)
+    return render_template("signupin.html", register=register, login=login)
+
+
+@app.route("/session/", methods=['GET', 'POST'])
+def success():
+    return render_template('session.html')
 
 
 if __name__ == "__main__":
+    app.config["TEMPLATES_AUTO_RELOAD"] = True
     app.run(debug=True)

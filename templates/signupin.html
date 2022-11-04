@@ -1,0 +1,28 @@
+{% extends 'main.html' %} {% block content %}
+<h1>Login</h1>
+<br />
+<br />
+<h3>Register User</h3>
+<form name="register_form" method="post">
+  {{ register.csrf_token }} {{ register.uid.label }}
+  <div>{{ register.uid() }}</div>
+  {{ register.email.label }}
+  <div>{{ register.email() }}</div>
+  {{ register.password.label }}
+  <div>{{ register.password() }}</div>
+  {{ register.confirm_password.label }}
+  <div>{{ register.confirm_password() }}</div>
+  <br />
+  {{ register.register() }}
+</form>
+
+<h3>Login User</h3>
+<form name="login_form" method="post">
+  {{ login.csrf_token }} {{ login.uid.label }}
+  <div>{{ login.uid() }}</div>
+  {{ login.password.label }}
+  <div>{{ login.password() }}</div>
+  <br />
+  {{ login.login() }}
+</form>
+{% endblock content %}

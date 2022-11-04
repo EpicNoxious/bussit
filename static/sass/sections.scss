@@ -1,0 +1,20 @@
+.section {
+  height: 100vh;
+  padding: 6.4rem;
+  & > * {
+    max-width: 130rem;
+    margin: 0 auto;
+  }
+  &__heading {
+    font-size: 9.6rem;
+    font-family: "Secular One", sans-serif;
+    display: flex;
+    justify-content: center;
+    color: var(--blue-2);
+  }
+}
+
+.started_form {
+  display: flex;
+  justify-content: center;
+}

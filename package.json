@@ -1,0 +1,14 @@
+{
+  "name": "bussit",
+  "version": "1.0.0",
+  "description": "Bussit web application",
+  "main": "index.js",
+  "scripts": {
+    "watch:sass": "sass static/sass/main.scss static/css/styles.css -w"
+  },
+  "author": "Jappreet Singh",
+  "license": "ISC",
+  "devDependencies": {
+    "sass": "^1.55.0"
+  }
+}
