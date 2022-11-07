@@ -14,6 +14,7 @@ db = cluster.users
 # USER
 class User:
     def begin_session(self, user):
+        del user['_id']
         del user['password']
         print(user)
         session['logged_in'] = True
@@ -97,6 +98,7 @@ def signupin():
             print("Passwords don't match")
         else:
             user.login(profile)
+            return redirect(url_for('success'))
 
     # if read.read.data and read.validate_on_submit():
     #     print('read')
