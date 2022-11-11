@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+    src="https://kit.fontawesome.com/64d58efce2.js"
+    crossorigin="anonymous"
+  ></script>
+    <title>Document</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+        
+        body,
+        input {
+          font-family: "Poppins", sans-serif;
+        }
+        
+
+        .signin-signup {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            left: 50%;
+            width: 50%;
+            transition: 1s 0.7s ease-in-out;
+            display: grid;
+            grid-template-columns: 1fr;
+            z-index: 5;
+          }    
+
+          form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0rem 5rem;
+            transition: all 0.2s 0.7s;
+            overflow: hidden;
+            grid-column: 1 / 2;
+            grid-row: 1 / 2;
+          }
+            
+          .title {
+            font-size: 2.2rem;
+            color: #444;
+            margin-bottom: 10px;
+          }
+          
+          .input-field {
+            max-width: 380px;
+            width: 100%;
+            background-color: #f0f0f0;
+            margin: 10px 0;
+            height: 55px;
+            border-radius: 55px;
+            display: grid;
+            grid-template-columns: 15% 85%;
+            padding: 0 0.4rem;
+            position: relative;
+          }
+          
+          .input-field i {
+            text-align: center;
+            line-height: 55px;
+            color: #acacac;
+            transition: 0.5s;
+            font-size: 1.1rem;
+          }
+          
+          .input-field input {
+            background: none;
+            outline: none;
+            border: none;
+            line-height: 1;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #333;
+          }
+          
+          .input-field input::placeholder {
+            color: #aaa;
+            font-weight: 500;
+          }
+          
+          .social-text {
+            padding: 0.7rem 0;
+            font-size: 1rem;
+          }
+          
+          .social-media {
+            display: flex;
+            justify-content: center;
+          }
+          
+          .social-icon {
+            height: 46px;
+            width: 46px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 0.45rem;
+            color: #333;
+            border-radius: 50%;
+            border: 1px solid #333;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: 0.3s;
+          }
+          
+          .social-icon:hover {
+            color: #bb2225;
+            border-color: #bb2225;
+          }
+          @media (max-width: 570px) {
+            form {
+              padding: 0 1.5rem;
+            }
+          
+            .image {
+              display: none;
+            }
+            .panel .content {
+              padding: 0.5rem 1rem;
+            }
+            .container {
+              padding: 1.5rem;
+            }
+          
+            .container:before {
+              bottom: 72%;
+              left: 50%;
+            }
+          
+            .container.sign-up-mode:before {
+              bottom: 28%;
+              left: 50%;
+            }
+          }
+          .container:before {
+            width: 1500px;
+            height: 1500px;
+            transform: translateX(-50%);
+            left: 30%;
+            bottom: 68%;
+            right: initial;
+            top: initial;
+            transition: 2s ease-in-out;
+          }
+
+          
+          /* ANIMATION */
+          
+          .container.sign-up-mode:before {
+            transform: translate(100%, -50%);
+            right: 52%;
+          }
+          
+          .container.sign-up-mode .left-panel .image,
+          .container.sign-up-mode .left-panel .content {
+            transform: translateX(-800px);
+          }
+          
+          .container.sign-up-mode .signin-signup {
+            left: 25%;
+          }
+          
+          .container.sign-up-mode form.sign-up-form {
+            opacity: 1;
+            z-index: 2;
+          }
+  
+          .btn.transparent {
+            margin: 0;
+            border: 2px solid rgb(182, 26, 26);
+            width: 130px;
+            height: 41px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            color: white;
+          }
+          .btn.transparent a
+          {
+            color: white;
+            text-decoration: none;
+          }
+          .btn {
+            width: 150px;
+            background-color: #bb2225;
+            border: none;
+            outline: none;
+            height: 49px;
+            border-radius: 49px;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: 600;
+            margin: 10px 0;
+            cursor: pointer;
+            transition: 0.5s;
+          }
+          
+          .btn:hover {
+            background-color: #bb2225;
+          }
+    </style>
+</head>
+<body>
+    <div class="container">
+    <div class="forms-container">
+        <div class="signin-signup">
+          <form action="#" class="sign-in-form">
+            <h2 class="title">Sign in</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="Username" />
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" placeholder="Password" />
+            </div>
+            <input type="submit" value="Login" class="btn solid" />
+            <button class="btn transparent" id="sign-up-btn">
+             <a href="">Sign-Up</a> 
+            </button>
+            <p class="social-text">Or Sign in with social platforms</p>
+            <div class="social-media">
+              <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-google"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+        </div>
+     
+        </div>
+       
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% extends 'main.html' %} {% block content %}
+<link rel='stylesheet' href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css')}}">
+<div class="container">
+  <div class="forms-container">
+    <div class="signin-signup">
+
+      <form name="login_form" method="post" class="sign-up-form">
+        {{ login.csrf_token }}
+
+        <h2 class="title">Sign In</h2>
+
+        <div class="input-field">
+          <i class="fas fa-user"></i>
+          {{ login.uid() }}
+        </div>
+
+        <div class="input-field">
+          <i class="fas fa-user"></i>
+          {{ login.password() }}
+        </div>
+
+        {{ login.login(class='btn') }}
+        <p class="social-text">Using app for first time? <a href="{{url_for('signup')}}">Sign Up</a></p>
+
+      </form>
+    </div>
+  </div>
+
+  <div class="panels-container">
+    <div class="panel left-panel">
+      <div class="content">
+        <h3 style="font-size:3.2rem;">Welcome Back</h3>
+        <p style="font-size:1.4rem;">We are glad you came back!</p>
+        <button style="font-size:1.4rem;" class="btn transparent" id="sign-up-btn">Sign In</button>
+      </div>
+      <img src="img/log.svg" class="image" alt="" />
+    </div>
+    <div class="panel right-panel"></div>
+  </div>
+</div>
+        {% endblock content %}

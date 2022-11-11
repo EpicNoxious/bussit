@@ -7,17 +7,32 @@
     <title>Document</title>
     <link rel=stylesheet type=text/css href="{{ url_for('static',
     filename='css/styles.css') }}">
+    <link rel=stylesheet type=text/css href="{{ url_for('static',
+    filename='css/signuppage.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Secular+One&display=swap"
       rel="stylesheet"
     />
+
   </head>
 
   {% include 'navbar.html' %}
   <!--  -->
-  {% block content %} {% endblock content %}
+  {% if get_flashed_messages() %} {% for message in get_flashed_messages() %}
+  <div id="hideMe" class="alert alert-warning" role="alert">
+    <ul style="list-style: none;" class="flashes" id="hideMe">
+      <li style="color: var(--blue-1); font-size: 1.6rem">{{ message }}</li>
+    </ul>
+  </div>
+  {% endfor %} {% endif %}
+
+  {% block content %}
+
+  {% endblock content %}
   <!--  -->
   {% include 'footer.html' %}
+<script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <script src="{{url_for('static', filename='js/signuppage.js')}}"></script>
 </html>

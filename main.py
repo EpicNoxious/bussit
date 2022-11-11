@@ -37,6 +37,7 @@ class User:
 
     def login(self, profile):
         user = {
+            "_id": profile['_id'],
             "uid": profile['uid'],
             "email": profile['email'],
             "password": profile['password'],
@@ -44,15 +45,11 @@ class User:
         return self.begin_session(user)
 
 
-# ROUTES
-# @app.route("/", methods=['GET'])
-# def main():
-#     return render_template("main.html")
 @app.route("/", methods=['GET', 'POST'])
 def index():
     started = GetStarted()
     if started.validate_on_submit():
-        return redirect(url_for('signupin'))
+        return redirect(url_for('signin'))
     return render_template("index.html", started=started)
 
 
@@ -78,8 +75,10 @@ def signupin():
 
         if profile is not None:
             print("User already exists")
+            flash('User already exists')
         elif password != confirm_password:
             print("Passwords don't match")
+            flash("Passwords don't match")
         else:
             user.register(query)
             return redirect(url_for('success'))
@@ -94,8 +93,10 @@ def signupin():
 
         if profile is None:
             print("User does not exist in database")
+            flash("User does not exist in database")
         elif password != profile['password']:
             print("Passwords don't match")
+            flash("Passwords don't match")
         else:
             user.login(profile)
             return redirect(url_for('success'))
@@ -112,6 +113,59 @@ def signupin():
 @app.route("/session/", methods=['GET', 'POST'])
 def success():
     return render_template('session.html')
+
+@app.route("/signup/", methods=['GET', 'POST'])
+def signup():
+    register = Register()
+    user = User()
+    if register.register.data and register.validate():
+        uid = request.form['uid']
+        email = request.form['email']
+        password = request.form['password']
+        confirm_password = request.form['confirm_password']
+
+        query = {
+            'uid': uid,
+            'email': email,
+            'password': password
+            }
+        profile = db.find_one({'uid': uid})
+
+        if profile is not None:
+            print("User already exists")
+            flash("User already exists")
+            flash("User already exists")
+        elif password != confirm_password:
+            print("Passwords don't match")
+            flash("Passwords don't match")
+        else:
+            user.register(query)
+            return redirect(url_for('success'))
+
+    return render_template('signuppage.html', register=register)
+
+
+@app.route("/signin/", methods=['GET', 'POST'])
+def signin():
+    login = Login()
+    user = User()
+    if login.login.data and login.validate():
+        uid = request.form['uid']
+        password = request.form['password']
+
+        profile = db.find_one({'uid': uid})
+        print(profile)
+
+        if profile is None:
+            print("User does not exist in database")
+            flash("User does not exist in database")
+        elif password != profile['password']:
+            print("Passwords don't match")
+            flash("Passwords don't match")
+        else:
+            user.login(profile)
+            return redirect(url_for('success'))
+    return render_template('signinpage.html', login=login)
 
 
 if __name__ == "__main__":

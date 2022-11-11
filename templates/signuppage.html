@@ -1,0 +1,52 @@
+{% extends 'main.html' %} {% block content %}
+<link rel='stylesheet' href="{{ url_for('static', filename='font-awesome/css/font-awesome.min.css')}}">
+<div class="container">
+  <div class="forms-container">
+    <div class="signin-signup">
+
+
+      <form name="register_form" method="post" class="sign-up-form">
+        {{ register.csrf_token }}
+
+        <h2 class="title">Sign up</h2>
+
+        <div class="input-field">
+          <i class="fas fa-user"></i>
+          {{ register.uid() }}
+        </div>
+
+        <div class="input-field">
+          <i class="fas fa-envelope"></i>
+          {{ register.email() }}
+        </div>
+
+        <div class="input-field">
+          <i class="fas fa-lock"></i>
+          {{ register.password() }}
+        </div>
+
+        <div class="input-field">
+          <i class="fas fa-lock"></i>
+          {{ register.confirm_password() }}
+        </div>
+
+        {{ register.register(class='btn') }}
+        <p class="social-text">Already have an account? <a href="{{url_for('signin')}}">Sign In</a></p>
+
+      </form>
+    </div>
+  </div>
+
+  <div class="panels-container">
+    <div class="panel left-panel">
+      <div class="content">
+        <h3 style="font-size:3.2rem;">New to BussIt?</h3>
+        <p style="font-size:1.4rem;">Welcome to University Bus Management System</p>
+        <button style="font-size:1.4rem;" class="btn transparent" id="sign-up-btn">Sign up</button>
+      </div>
+      <img src="img/log.svg" class="image" alt="" />
+    </div>
+    <div class="panel right-panel"></div>
+  </div>
+</div>
+        {% endblock content %}
