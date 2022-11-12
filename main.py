@@ -4,10 +4,9 @@ from forms import GetStarted, Register, Login, ReadForm, UpdateForm, DeleteForm
 
 app = Flask(__name__)
 app.secret_key = 'Bussit'
-# cluster = "mongodb://atlas.."
-# client = MongoClient(cluster)
-client = MongoClient("localhost", 27017)
-cluster = client['crud']
+cluster = "mongodb+srv://Noxious:Ja-pp-re-et16@cluster0.p231li5.mongodb.net/?retryWrites=true&w=majority"
+client = MongoClient(cluster)
+cluster = client['bussit']
 db = cluster.users
 
 
