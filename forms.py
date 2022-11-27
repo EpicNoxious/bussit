@@ -4,7 +4,7 @@ from wtforms import StringField, SubmitField, PasswordField
 
 
 class GetStarted(FlaskForm):
-    started = SubmitField("Get Started")
+    started = SubmitField("LOGIN")
 
 
 class Register(FlaskForm):

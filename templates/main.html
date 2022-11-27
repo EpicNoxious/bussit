@@ -15,6 +15,18 @@
       href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;500;600;700&family=Secular+One&display=swap"
       rel="stylesheet"
     />
+    <link rel=stylesheet type=text/css href="{{ url_for('static',
+    filename='css/_main.511f80df.css') }}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;700&family=Secular+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
 
   </head>
 
@@ -33,6 +45,7 @@
   {% endblock content %}
   <!--  -->
   {% include 'footer.html' %}
-<script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
     <script src="{{url_for('static', filename='js/signuppage.js')}}"></script>
+    <script src="{{url_for('static', filename='js/_main511f80df.js')}}"></script>
 </html>

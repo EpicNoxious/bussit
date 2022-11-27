@@ -1,21 +1,156 @@
 {% extends 'main.html' %} {% block content %}
-<div class="section section--1">
-  <h1 class="section__heading">Welcome to BussIt</h1>
 
-  <form method="post" name="started_form" class="started_form">
-    {{ started.csrf_token }} {{ started.started }}
-  </form>
-</div>
-<div class="section section--2">
-  <h1 class="section__heading">Sample Heading</h1>
-</div>
-<div class="section section--3">
-  <h1 class="section__heading">Sample Heading</h1>
-</div>
-<div class="section section--4">
-  <h1 class="section__heading">Sample Heading</h1>
-</div>
-<div class="section section--5">
-  <h1 class="section__heading">Sample Heading</h1>
-</div>
+  <main class="main">
+    <section class="hero section">
+      <article class="hero__text-box">
+        <h1 class="heading__primary animate__animated animate__zoomInDown">
+          BussIt
+        </h1>
+        <p class="hero__tagline animate__animated animate__zoomInUp"></p>
+        <form method="post" name="started_form" class="started_form">
+          {{ started.csrf_token }} {{ started.started(class='btn') }}
+        </form>
+      </article>
+      <aside class="hero__image-box">
+        <figure>
+          <img
+            src="../static/img/hero.webp"
+            alt="Image of Bussit web app"
+            class="hero__img animate__animated animate__zoomInUp"
+          />
+        </figure>
+      </aside>
+    </section>
+    <section class="features section">
+      <h2 class="heading__secondary">
+        Features that you just cant <span>ignore</span>
+        <img
+          src="../static/img/underline.svg"
+          alt="undeline"
+          underline="true"
+        />
+      </h2>
+      <article class="features">
+        <div class="feature">
+          <article class="feature__text-box">
+            <p class="feature__num">01</p>
+            <h3 class="heading__tertiary">Track your bus</h3>
+            <p class="feature__details">
+              Get to track your bus in a single click and save your time and
+              manage your tasks accordingly, you will be able to track the
+              starting point and the ending point of your journey and also get
+              details like driver's name ,phone number etc
+            </p>
+          </article>
+          <aside class="feature__img-box">
+            <img
+              src="../static/img/feature-1.svg"
+              alt="Location tracking img"
+              class="feature__img"
+            />
+          </aside>
+        </div>
+        <div class="feature">
+          <article class="feature__text-box">
+            <p class="feature__num">02</p>
+            <h3 class="heading__tertiary">Get all necessary details</h3>
+            <p class="feature__details">
+              Get the estimated arrival and departure time on the basis of
+              distance to be travelled , you can also mark the location on the
+              map and also track the locations where bus is gonna stop , also
+              get extra details like bus starting time.
+            </p>
+          </article>
+          <aside class="feature__img-box">
+            <img
+              src="../static/img/feature-2.svg"
+              alt="Location tracking img"
+              class="feature__img"
+            />
+          </aside>
+        </div>
+        <div class="feature">
+          <article class="feature__text-box">
+            <p class="feature__num">03</p>
+            <h3 class="heading__tertiary">Get notified beforehand</h3>
+            <p class="feature__details">
+              We all hate it when we miss our bus cause we forget the time , as
+              we know these buses wait for none, so to solve this you will be
+              notified 10 mins beforehand when the bus is gonna departure from
+              the university , so a student never misses his/her bus.
+            </p>
+          </article>
+          <aside class="feature__img-box">
+            <img
+              src="../static/img/feature-3.svg"
+              alt="Location tracking img"
+              class="feature__img"
+            />
+          </aside>
+        </div>
+      </article>
+    </section>
+    <section class="testimonials section">
+      <h2 class="heading__secondary">Don't believe <span>us?</span></h2>
+      <p class="testimonials__subheading">See what our users have to say</p>
+      <div class="review">
+        <article class="review__1">
+          <h4 class="review__heading">"I really needed this"</h4>
+          <p class="review__details">
+            BussIt cured my bad habits! I was the guy who always missed his bus
+            and then had to rely on public transport. Waiting for autos, paying
+            extra cash to them, arriving late at the university, missing my
+            lectures, and so on... Thanks to the BussIt team, whom I can trust.
+            I always get alerts before the arrival of the bus and this is
+            awesome!
+          </p>
+        </article>
+        <article class="review__2">
+          <h4 class="review__heading">"Absolutely MindBlowing"</h4>
+          <p class="review__details">
+            It's such a great improvement in quality of life after having
+            'BussIt' installed on my phone. Sometimes it's just annoying waiting
+            for the bus without even knowing when the bus will arrive. Waiting
+            for the bus on these cold winter days usually caught me cold but not
+            anymore! I just go out to board the bus only when the bus is about
+            to arrive. Thank you BussIt.
+          </p>
+        </article>
+        <article class="review__3">
+          <h4 class="review__heading">"Life Saver"</h4>
+          <p class="review__details">
+            It's just very awesome , very efficient app in terms of performance
+            and scalability, would really love to see it reach greater heights
+            and it would be very awesome if it comes to play store as well
+          </p>
+        </article>
+        <article class="review__4">
+          <h4 class="review__heading">"Awesome"</h4>
+          <p class="review__details">
+            BussIt has been my go to web-app for sure because its reliable! i
+            have been using this web application for two months now and I really
+            am not disappointed by the qualiity it is providing and that too for
+            free!
+          </p>
+        </article>
+
+        <article class="review__6">
+          <h4 class="review__heading">"Genius Idea"</h4>
+          <p class="review__details">
+            The guy who thought about this idea for tghe university students is
+            so genious an generous. thanks to the developers, because of them I
+            am able to board my bus without any hassle of calling my friends(who
+            alreay got boarded) and asking for the locations and stops every 10
+            minutes. Just one suggestion, auto fill my frequent routes.
+          </p>
+        </article>
+      </div>
+    </section>
+    <section class="call_to_action section">
+      <h2 class="heading__secondary">Convinced <span>Yet?</span></h2>
+      <p class="testimonials__subheading">Sign in and enjoy our services</p>
+    </section>
+  </main>
+
+
 {% endblock content %}
